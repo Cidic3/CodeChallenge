@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Prämienberechnung</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Dark Mode Styling */
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 255, 128, 0.3);
+        }
+
+        h1 {
+            color: #00c853;
+        }
+
+        form {
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, select, button {
+            display: block;
+            width: 100%;  /* Ensure all elements take the full available width */
+            box-sizing: border-box;  /* Make sure padding is included in width */
+            padding: 8px;
+            margin-top: 10px;
+            background-color: #2c2c2c;
+            border: 1px solid #00c853;
+            color: #ffffff;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #00c853;
+            color: black; /* Set text color to black */
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px; /* Ensure space between input fields and button */
+        }
+
+        button:hover {
+            background-color: #00e676;
+        }
+
+        #errorMessage {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Result Styling */
+        h2 {
+            margin-top: 20px;
+        }
+
+        #ergebnis {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00e676;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Berechnen Sie Ihre Prämie</h1>
+
+    <!-- Fehleranzeige -->
+    <div id="errorMessage"></div>
+
+    <form id="praemieForm">
+        <label for="kilometerleistung">Kilometerleistung:</label>
+        <input type="number" id="kilometerleistung" name="kilometerleistung" required min="1"/>
+        <br>
+
+        <label for="fahrzeugtyp">Fahrzeugtyp:</label>
+        <select id="fahrzeugtyp" name="fahrzeugtyp">
+            <option value="1">PKW</option>
+            <option value="2">LKW</option>
+        </select>
+        <br>
+
+        <label for="postleitzahl">Postleitzahl:</label>
+        <input type="text" id="postleitzahl" name="postleitzahl" required/>
+        <br>
+
+        <button type="submit">Berechnen</button>
+    </form>
+
+    <!-- Ergebnis-Anzeige -->
+    <h2>Ergebnis: <span id="ergebnis"></span></h2>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#praemieForm").submit(function (event) {
+            event.preventDefault(); // Prevents page reload
+
+            var requestData = {
+                kilometerleistung: $("#kilometerleistung").val(),
+                fahrzeugtyp: $("#fahrzeugtyp").val(),
+                postleitzahl: $("#postleitzahl").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/api/praemie/berechnen",
+                contentType: "application/json",
+                data: JSON.stringify(requestData),
+                success: function (response) {
+                    $("#errorMessage").text("");  // Clear error
+                    $("#ergebnis").text(parseFloat(response.premium).toFixed(2) + " €");
+                },
+                error: function (xhr) {
+                    var errorMessage = xhr.responseJSON?.error || "Ein Fehler ist aufgetreten.";
+                    $("#errorMessage").text(errorMessage);
+                    $("#ergebnis").text("");  // Clear result
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
