@@ -77,9 +77,9 @@ public class PraemienBerechnungServiceTest {
     @Test
     public void testRegionFaktor() {
         // Test für das Region "Baden-Württemberg"
-        Bundesland bundesland = Bundesland.BADEN_WUERTTEMBERG; // Verwende den Enum
+        Bundesland bundesland = Bundesland.BADEN_WUERTTEMBERG;
         double expected = 1.0;
-        double actual = praemienBerechnungServiceInstance.getRegionFaktor(bundesland); // Regionfaktor aus dem Enum
+        double actual = praemienBerechnungServiceInstance.getRegionFaktor(bundesland);
         assertEquals("Der Regionfaktor für Baden-Württemberg sollte 1.0 betragen.", expected, actual, 0.0);
     }
 
@@ -102,9 +102,9 @@ public class PraemienBerechnungServiceTest {
     @Test
     public void testBerechnePraemie() {
         // Test für die Berechnung der Prämie mit den Werten:
-        int kilometerleistung = 20000;  // Kilometerleistung als int
+        int kilometerleistung = 20000;
         int fahrzeugtyp = 2;  // LKW als int
-        Bundesland bundesland = Bundesland.NORDRHEIN_WESTFALEN;  // Region als Enum
+        Bundesland bundesland = Bundesland.NORDRHEIN_WESTFALEN;
 
         // Berechnungslogik: Kilometerfaktor (1.5) * Fahrzeugtypfaktor (2) * Regionfaktor (angenommener Wert für NRW)
         double expected = 1.5 * 2.0 *  1.0;  // 1.5 (Kilometerfaktor) * 2.0 (Fahrzeugtypfaktor für LKW) * 1.0 (Regionfaktor NRW)
@@ -120,7 +120,7 @@ public class PraemienBerechnungServiceTest {
     public void testBerechnePraemieMitMock() {
         // Eingabewerte
         int kilometerleistung = 20000;
-        int fahrzeugtyp = 2;  // Beispielwert für LKW
+        int fahrzeugtyp = 2;  // LKW
         Bundesland bundesland = Bundesland.NORDRHEIN_WESTFALEN;
 
         // Stub für den Rückgabewert von berechnePraemie
