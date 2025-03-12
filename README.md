@@ -21,7 +21,8 @@ Dies ist eine Spring-Boot-Anwendung zur Berechnung einer Versicherungsprämie ba
 ```bash
 git clone https://github.com/dein-benutzername/CodeChallenge.git
 
-**2. Konfiguration der Datenbank:**
+
+## Konfiguration der Datenbank
 Erstelle eine MySQL-Datenbank mit dem Namen ScopeVisio.
 Stelle sicher, dass die Zugangsdaten in der Datei src/main/resources/application.properties korrekt sind:
 
