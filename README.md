@@ -11,7 +11,7 @@ Dies ist eine Spring-Boot-Anwendung zur Berechnung einer Versicherungsprämie ba
 
 ## Systemvoraussetzungen
 
-- Java 11 oder höher
+- Java 23 oder höher
 - MySQL-Datenbank
 - Gradle (für den Build-Prozess)
 
@@ -33,21 +33,13 @@ spring.datasource.username=<yourUsernameHere>
 spring.datasource.password=<yourPasswordHere>
 ```
 
-### 3. Baue das Projekt:
-
-- Navigiere in das Projektverzeichnis und führe Gradle aus:
-
-```bash 
-gradle build
-```
-
-### 4. Starte das Projekt:
+### 3. Starte das Projekt:
 
 ```bash 
 gradle bootRun
 ```
 
-### 5. Web-Oberfläche:
+### 4. Web-Oberfläche:
 
 - Die Web-Oberfläche ist unter folgendem Link erreichbar:
 
@@ -55,7 +47,7 @@ gradle bootRun
 http://localhost:8080/praemie/formular
 ```
 
-### 6. API-Endpunkte:
+### 5. API-Endpunkte:
 
 - **POST** /api/praemie/berechnen: Berechnet die Versicherungsprämie.
   - **Request Body:**
