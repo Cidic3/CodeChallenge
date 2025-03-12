@@ -24,7 +24,6 @@ public class PraemienBerechnungServiceTest {
 
     @Before
     public void setUp() {
-        // Keine Notwendigkeit für die manuelle Initialisierung hier, da @Mock und @InjectMocks alles erledigen.
     }
 
     @Test
