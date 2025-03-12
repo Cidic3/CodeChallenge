@@ -80,6 +80,13 @@ http://localhost:8080/praemie/formular
 ### Wahl der Datenbank
 Ich habe mich für MySQL als relationale Datenbank entschieden, da sie gut für die persistente Speicherung von strukturierten Daten geeignet ist. Sie bietet eine stabile und skalierbare Lösung für die Anforderungen dieses Projekts und ist eine weit verbreitete und gut unterstützte Option.
 
+## Kommunikation zwischen den Services
+
+Die Kommunikation zwischen den einzelnen Services erfolgt direkt über methodische Aufrufe innerhalb der Spring-Service-Klassen.
+Die PraemienBerechnungService übernimmt die fachliche Berechnung der Prämie basierend auf den übergebenen Parametern (Kilometerleistung, Fahrzeugtyp, Region).
+Der AntragService nutzt diesen Berechnungsservice, um für einen Antragsteller die Prämie zu berechnen und anschließend das Ergebnis zusammen mit den Nutzerdaten in der Datenbank zu speichern.
+Die Übergabe der Daten erfolgt dabei intern und synchron über die Service-Methoden. Nach außen wird die Berechnung über den AntragController per HTTP-Request (REST-API und Formular) zugänglich gemacht.
+
 ## Testen
 
 Die Anwendung verwendet JUnit für Unit-Tests und Mockito für das Mocken von Services. Die Tests befinden sich im Ordner /src/test/java/com/mundorf/codechallenge.
