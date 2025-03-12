@@ -1,4 +1,4 @@
-# CodeChallenge - Versicherungsprämie Berechnung
+# CodeChallenge - Berechnung von Versicherungsprämien
 
 Dies ist eine Spring-Boot-Anwendung zur Berechnung einer Versicherungsprämie basierend auf der Kilometerleistung des Fahrzeugs, dem Fahrzeugtyp und der Region der Zulassungsstelle.
 
