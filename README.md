@@ -68,7 +68,7 @@ http://localhost:8080/praemie/formular
 
 ## Datenbankstruktur
 
-- Die Anwendung speichert die Anfragen und Berechnungen in einer MySQL-Datenbank. Die Haupttabelle könnte wie folgt aussehen:
+Die Anwendung speichert die Anfragen und Berechnungen in einer MySQL-Datenbank. Die Haupttabelle könnte wie folgt aussehen:
 
 | **id** | **anfrage_datum** | **fahrzeugtyp** | **kilometerleistung** | **postleitzahl** | **praemie** |
 |--------|-------------------|-----------------|-----------------------|------------------|-------------|
