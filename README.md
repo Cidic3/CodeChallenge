@@ -62,7 +62,7 @@ http://localhost:8080/praemie/formular
   - **Response:**
   ```bash
   {
-      "premium": 180.0
+      "praemie": 180.0
   }
   ```
 
